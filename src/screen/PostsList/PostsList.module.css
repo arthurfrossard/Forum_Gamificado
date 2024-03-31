@@ -1,0 +1,24 @@
+.postsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 40px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media screen and (min-width: 600px) {
+  .posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

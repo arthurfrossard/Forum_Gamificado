@@ -1,0 +1,55 @@
+.container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-width: 400px;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.topic {
+  margin: 0;
+}
+
+.bodyText {
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+}
+
+.voteButton {
+  background-color: #ff9966;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.interactions {
+  display: flex;
+}
+
+.comment,
+.likes {
+  margin-right: 10px;
+  cursor: pointer;
+}
