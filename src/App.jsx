@@ -8,6 +8,10 @@ import postsData from "./data/dataPosts.json";
 
 import "./App.css";
 
+const DataBaseTopics = "https://databasetopics-bbae0-default-rtdb.firebaseio.com/";
+const DataBaseUsers = "https://databaseusers-7fbfd-default-rtdb.firebaseio.com/";
+
+
 function App() {
   const [currentPage, setCurrentPage] = useState("PostsList");
 

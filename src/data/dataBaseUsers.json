@@ -1,0 +1,18 @@
+{
+  "users": {
+    "user1": {
+      "userName": "nome",
+      "email": "teste@gmail.com",
+      "password": "senha",
+      "topics": ["topic1"],
+      "score": 3
+    },
+    "user2": {
+      "userName": "nome2",
+      "email": "teste2@gmail.com",
+      "password": "senha2",
+      "topics": ["topic2"],
+      "score": 3
+    }
+  }
+}
