@@ -41,12 +41,12 @@ const CreateUser = () => {
   };
 
   const validateUserName = (name) => {
-    const regex = /^[a-z0-9-_.]*$/; // Apenas letras minúsculas, números e alguns caracteres especiais.
-    return regex.test(name) && !/\s/.test(name); // Sem espaços.
+    const regex = /^[a-z0-9-_.]*$/;
+    return regex.test(name) && !/\s/.test(name);
   };
 
   const validatePassword = (pass) => {
-    return pass.length >= 8 && !/\s/.test(pass); // Pelo menos 8 caracteres, sem espaços.
+    return pass.length >= 8 && !/\s/.test(pass);
   };
 
   const isUserNameTaken = (name) => {

@@ -1,3 +1,5 @@
+// App.js
+
 import React, { useState } from "react";
 import AppBar from "./components/AppBar/AppBar";
 import Login from "./components/Login/Login";
@@ -8,17 +10,24 @@ import postsData from "./data/dataPosts.json";
 
 import "./App.css";
 
-const DataBaseTopics = "https://databasetopics-bbae0-default-rtdb.firebaseio.com/";
 const DataBaseUsers = "https://databaseusers-7fbfd-default-rtdb.firebaseio.com/";
-
 
 function App() {
   const [currentPage, setCurrentPage] = useState("PostsList");
+  const [user, setUser] = useState(null);
+
+  const handleLogin = (loggedInUser) => {
+    setUser(loggedInUser);
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
       case "Login":
-        return <Login />;
+        return <Login onLogin={handleLogin} />;
       case "CreateUser":
         return <CreateUser />;
       case "CreatePost":
@@ -30,7 +39,7 @@ function App() {
 
   return (
     <main>
-      <AppBar setCurrentPage={setCurrentPage} />
+      <AppBar user={user} onLogout={handleLogout} setCurrentPage={setCurrentPage} />
       {renderPage()}
     </main>
   );

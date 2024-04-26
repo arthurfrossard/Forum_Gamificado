@@ -75,7 +75,7 @@ const Button = styled.button`
   }
 `;
 
-const Drawer = ({ isOpen, toggleDrawer, setCurrentPage }) => {
+const Drawer = ({ isOpen, toggleDrawer, setCurrentPage, user, onLogout }) => {
   const handleItemClick = (page) => {
     setCurrentPage(page);
     toggleDrawer();
@@ -89,18 +89,29 @@ const Drawer = ({ isOpen, toggleDrawer, setCurrentPage }) => {
             <MdHome />
             Home
           </Button>
-          <Button onClick={() => handleItemClick("Login")}>
-            <IoLogIn />
-            Login
-          </Button>
-          <Button onClick={() => handleItemClick("CreateUser")}>
-            <GiArchiveRegister />
-            Cadastre-se
-          </Button>
-          <Button onClick={() => handleItemClick("CreatePost")}>
-            <MdOutlinePostAdd />
-            Postar
-          </Button>
+          {user ? (
+            <>
+              <Button onClick={() => handleItemClick("Profile")}>
+                Perfil
+              </Button>
+              <Button onClick={() => handleItemClick("CreatePost")}>
+                <MdOutlinePostAdd />
+                Postar
+              </Button>
+              <Button onClick={onLogout}>Logout</Button>
+            </>
+          ) : (
+            <>
+              <Button onClick={() => handleItemClick("Login")}>
+                <IoLogIn />
+                Login
+              </Button>
+              <Button onClick={() => handleItemClick("CreateUser")}>
+                <GiArchiveRegister />
+                Cadastre-se
+              </Button>
+            </>
+          )}
         </DrawerContent>
       </DrawerContainer>
       {isOpen && <Backdrop onClick={toggleDrawer} />}
