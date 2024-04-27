@@ -7,7 +7,16 @@ const PostsList = ({ posts }) => {
     <div className={styles.postsContainer}>
       <div className={styles.posts}>
         {posts.map((post, index) => (
-          <Post key={index} topic={post.topic} body={post.body} />
+          <Post
+            key={index}
+            keyWords={post.keyWords}
+            publicationDate={post.publicationDate}
+            description={post.description}
+            title={post.title}
+            userName={post.userName}
+            likes={post.like}
+            dislikes={post.disliked}
+          />
         ))}
       </div>
     </div>

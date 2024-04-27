@@ -1,82 +1,70 @@
-[
-  {
-    "topic": "Primeiro Post",
-    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum tellus eget arcu ultrices, vel venenatis velit consequat. Integer non libero nec lorem efficitur fermentum."
-  },
-  {
-    "topic": "Segundo Post",
-    "body": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque hendrerit quam vel nisl tempor, at laoreet nisi ultrices."
-  },
-  {
-    "topic": "Terceiro Post",
-    "body": "Vestibulum vitae magna vitae velit scelerisque bibendum. Aliquam posuere, nisl sed dignissim pharetra, lorem nisl scelerisque nisi, eu facilisis velit lectus sed dolor."
-  },
-  {
-    "topic": "Quarto Post",
-    "body": "Nulla facilisi. Duis tincidunt, mauris et bibendum dignissim, nulla lacus hendrerit nulla, ut ultricies urna lectus nec quam. Duis eu ex nisi."
-  },
-  {
-    "topic": "Quinto Post",
-    "body": "Fusce vehicula lorem id massa ultrices, vel fringilla sem convallis. Curabitur efficitur quam vel justo finibus, nec tempor nisl sodales."
-  },
-  {
-    "topic": "Sexto Post",
-    "body": "Morbi tristique nisi nec enim ultrices, a aliquam nulla accumsan. Vestibulum in arcu nec purus tempus dignissim nec nec metus."
-  },
-  {
-    "topic": "Sétimo Post",
-    "body": "Donec non neque non nisi aliquet laoreet. Aenean vehicula arcu sit amet risus congue, non pretium purus vestibulum."
-  },
-  {
-    "topic": "Oitavo Post",
-    "body": "Fusce viverra urna nec nibh pharetra, eu consectetur sem egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae."
-  },
-  {
-    "topic": "Nono Post",
-    "body": "Cras vitae ligula at eros tincidunt tincidunt. Proin maximus nisi in sapien blandit, nec blandit quam interdum."
-  },
-  {
-    "topic": "Décimo Post",
-    "body": "Vivamus sed quam a enim condimentum ultricies. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
-  },
-  {
-    "topic": "Décimo Primeiro Post",
-    "body": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nec nisi et purus vehicula fringilla."
-  },
-  {
-    "topic": "Décimo Segundo Post",
-    "body": "In ac mauris non dui bibendum fermentum. Vestibulum nec eros at purus sodales lacinia. Nam condimentum sem sit amet neque bibendum, vitae aliquam sem hendrerit."
-  },
-  {
-    "topic": "Décimo Terceiro Post",
-    "body": "Phasellus ut felis nec arcu sodales mattis. Fusce ac dapibus nulla, sed lobortis libero. Vestibulum id lorem a metus fermentum tempor."
-  },
-  {
-    "topic": "Décimo Quarto Post",
-    "body": "Sed a ligula nec felis tempus rutrum. Integer tristique dui a suscipit tempus. Maecenas ut dui quis libero euismod malesuada."
-  },
-  {
-    "topic": "Décimo Quinto Post",
-    "body": "Praesent dapibus ligula at malesuada feugiat. Nunc pharetra justo at felis fringilla, nec efficitur purus pulvinar. Duis nec arcu id orci sollicitudin rutrum."
-  },
-  {
-    "topic": "Décimo Sexto Post",
-    "body": "Aenean aliquet arcu vitae eros viverra, at malesuada nisl congue. Cras tempus magna sed quam scelerisque, vel consequat eros consectetur."
-  },
-  {
-    "topic": "Décimo Sétimo Post",
-    "body": "Integer non enim ac orci egestas molestie. Sed laoreet, lectus vitae laoreet gravida, elit enim tincidunt libero, a feugiat velit orci a metus."
-  },
-  {
-    "topic": "Décimo Oitavo Post",
-    "body": "Vestibulum congue libero ac felis vehicula bibendum. Nullam interdum nisl ut bibendum lacinia. Sed nec pharetra purus, nec rhoncus velit."
-  },
-  {
-    "topic": "Décimo Nono Post",
-    "body": "Quisque sed urna eget lectus hendrerit facilisis. In hac habitasse platea dictumst. Aliquam pharetra erat et urna finibus, non suscipit sapien commodo."
-  },
-  {
-    "topic": "Vigésimo Post",
-    "body": "Curabitur sit amet enim ac nunc tincidunt pharetra. Nullam tempus turpis quis arcu volutpat, id lobortis turpis posuere."
+{
+  "topics": {
+    "topic1": {
+      "keyWords": ["palavra", "chave"],
+      "publicationDate": "22/01/2024",
+      "comments": {
+        "comment1": {
+          "comments": {
+            "comment1": {
+              "text": "comentario interno",
+              "userName": "name"
+            },
+            "comment2": {
+              "text": "comentario interno 2",
+              "userName": "name"
+            }
+          },
+          "disliked": 10,
+          "like": 10,
+          "text": "primeiro comentário",
+          "userName": "name"
+        },
+        "comment2": {
+          "disliked": 10,
+          "like": 10,
+          "text": "segundo comentário",
+          "userName": "otherUser"
+        }
+      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum tellus eget arcu ultrices, vel venenatis velit consequat. Integer non libero nec lorem efficitur fermentum.",
+      "disliked": 10,
+      "like": 10,
+      "title": "Primeiro Post",
+      "userName": "name"
+    },
+    "topic2": {
+      "keyWords": ["palavra", "chave"],
+      "publicationDate": "22/01/2024",
+      "comments": {
+        "comment1": {
+          "comments": {
+            "comment1": {
+              "text": "comentario interno",
+              "userName": "name"
+            },
+            "comment2": {
+              "text": "comentario interno",
+              "userName": "name"
+            }
+          },
+          "disliked": 10,
+          "like": 10,
+          "text": "primeiro comentário",
+          "userName": "name"
+        },
+        "comment2": {
+          "disliked": 10,
+          "like": 10,
+          "text": "segundo comentário",
+          "userName": "otherUser"
+        }
+      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum tellus eget arcu ultrices, vel venenatis velit consequat. Integer non libero nec lorem efficitur fermentum.",
+      "disliked": 10,
+      "like": 10,
+      "title": "Segundo Post",
+      "userName": "name2"
+    }
   }
-]
+}

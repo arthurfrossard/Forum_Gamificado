@@ -24,19 +24,15 @@ const Login = ({ onLogin }) => {
       const data = await response.json();
       const usersList = Object.values(data);
 
-      // Verificar se o email existe
       const foundUser = usersList.find((user) => user.email === email);
 
       if (!foundUser) {
-        // Se o email não for encontrado
         setError("Email não encontrado");
       } else if (foundUser.password !== password) {
-        // Se o email for encontrado, mas a senha não corresponde
         setError("Senha incorreta");
       } else {
-        // Se email e senha estiverem corretos
         onLogin(foundUser);
-        setError(""); // Limpar erro se o login for bem-sucedido
+        setError("");
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);

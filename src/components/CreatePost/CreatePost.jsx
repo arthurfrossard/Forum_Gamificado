@@ -1,52 +1,106 @@
 import React, { useState } from "react";
 import styles from "./CreatePost.module.css";
 
-const CreatePost = () => {
-  const [topic, setTopic] = useState("");
-  const [body, setBody] = useState("");
+const DataBaseTopics = "https://databasetopics-bbae0-default-rtdb.firebaseio.com";
 
-  const handleTopicChange = (event) => {
-    setTopic(event.target.value);
+const CreatePost = ({ user, onPostCreated }) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [keyWordsText, setKeyWordsText] = useState("");
+  const userName = user.userName;
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
-  const handleBodyChange = (event) => {
-    setBody(event.target.value);
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handleKeyWordsChange = (event) => {
+    setKeyWordsText(event.target.value);
+  };
+
+  const formatDate = (date) => {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString();
+    const year = date.getFullYear().toString();
+
+    return `${day}/${month}/${year}`;
   };
 
   const handleCreatePost = (event) => {
     event.preventDefault();
+
+    const keyWords = keyWordsText
+      .split(",")
+      .map((kw) => kw.trim())
+      .filter((kw) => kw !== "");
+
     const postData = {
-      topic,
-      body,
+      title,
+      description,
+      keyWords,
+      publicationDate: formatDate(new Date()),
+      userName,
+      like: 0,
+      disliked: 0,
     };
-    console.log("Novo Post:", postData);
-    // Aqui você pode fazer algo com os dados do post, como enviar para um servidor
-    setTopic("");
-    setBody("");
+
+    fetch(`${DataBaseTopics}/topics.json`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Novo Post Criado:", data);
+        setTitle("");
+        setDescription("");
+        setKeyWordsText("");
+        if (onPostCreated) {
+          onPostCreated(); // Notifica o sucesso para redirecionamento
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao criar o post:", error);
+      });
   };
 
   return (
     <div className={styles.container}>
       <form onSubmit={handleCreatePost}>
         <div className={styles.formGroup}>
-          <label htmlFor="topic">Tópico:</label>
+          <label htmlFor="title">Título:</label>
           <input
             type="text"
-            id="topic"
-            value={topic}
-            onChange={handleTopicChange}
+            id="title"
+            value={title}
+            onChange={handleTitleChange}
             className={styles.input}
             required
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="body">Corpo do Post:</label>
+          <label htmlFor="description">Descrição:</label>
           <textarea
-            id="body"
-            value={body}
-            onChange={handleBodyChange}
+            id="description"
+            value={description}
+            onChange={handleDescriptionChange}
             className={`${styles.input} ${styles.textarea}`}
             required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="keyWords">Palavras-Chave (separadas por vírgula):</label>
+          <input
+            type="text"
+            id="keyWords"
+            value={keyWordsText}
+            onChange={handleKeyWordsChange}
+            className={styles.input}
           />
         </div>
         <button type="submit" className={styles.submitButton}>

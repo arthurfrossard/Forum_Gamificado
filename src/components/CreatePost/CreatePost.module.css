@@ -1,6 +1,6 @@
 .container {
   width: 400px;
-  margin: 12px auto; /* Isso centralizará o componente na tela */
+  margin: 12px auto;
 }
 
 .formGroup {

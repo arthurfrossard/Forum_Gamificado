@@ -1,38 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Post.module.css";
 
-const Post = ({ topic, body }) => {
-  const [score, setScore] = useState(0);
-
-  const handleUpvote = () => {
-    setScore(score + 1);
-  };
-
-  const handleDownvote = () => {
-    setScore(score - 1);
-  };
-
+const Post = ({ keyWords = [], publicationDate, description, title, userName, likes, dislikes }) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2 className={styles.topic}>Tópico: {topic}</h2>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.publicationDate}>
+          Publicado por {userName} em {publicationDate}
+        </p>
       </div>
       <div className={styles.body}>
-        <p className={styles.bodyText}>{body}</p>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.keyWords}>Palavras-chave: {keyWords.length > 0 ? keyWords.join(", ") : "Nenhuma palavra-chave"}</p>
       </div>
       <div className={styles.footer}>
-        <div className={styles.score}>
-          <button onClick={handleUpvote} className={styles.voteButton}>
-            +
-          </button>
-          <span className={styles.scoreValue}>{score}</span>
-          <button onClick={handleDownvote} className={styles.voteButton}>
-            -
-          </button>
-        </div>
         <div className={styles.interactions}>
           <span className={styles.comment}>Comentários</span>
-          <span className={styles.likes}>Curtidas</span>
+          <span className={styles.likes}>Curtidas: {likes}</span>
+          <span className={styles.dislikes}>Descurtidas: {dislikes}</span>
         </div>
       </div>
     </div>

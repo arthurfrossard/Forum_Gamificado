@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CreateUser.module.css";
 
-const CreateUser = () => {
+const CreateUser = ({ onUserCreated }) => {
   const [isLoading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -44,10 +44,11 @@ const CreateUser = () => {
     const regex = /^[a-z0-9-_.]*$/;
     return regex.test(name) && !/\s/.test(name);
   };
-
+  
   const validatePassword = (pass) => {
     return pass.length >= 8 && !/\s/.test(pass);
   };
+  
 
   const isUserNameTaken = (name) => {
     return existingUsers.some((user) => user.userName === name);
@@ -71,7 +72,7 @@ const CreateUser = () => {
 
     if (!validatePassword(password)) {
       setMessage(
-        "A senha deve ter pelo menos 8 caracteres e não conter espaços."
+        "A senha deve ter pelo menos 8 caracteres e sem espaços."
       );
       setLoading(false);
       return;
@@ -107,6 +108,9 @@ const CreateUser = () => {
           setUserName("");
           setEmail("");
           setPassword("");
+          if (onUserCreated) {
+            onUserCreated(); // Notifica o sucesso para redirecionamento
+          }
         } else {
           throw new Error("Erro ao criar o usuário.");
         }
