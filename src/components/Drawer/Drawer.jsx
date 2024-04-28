@@ -96,7 +96,7 @@ const Drawer = ({ isOpen, toggleDrawer, setCurrentPage, user, onLogout }) => {
             <>
               <Button onClick={() => handleItemClick("Profile")}>
                 <CgProfile />
-                Perfil
+                Meu Perfil
               </Button>
               <Button onClick={() => handleItemClick("CreatePost")}>
                 <MdOutlinePostAdd />

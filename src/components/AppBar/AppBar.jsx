@@ -26,15 +26,26 @@ const AppBar = ({ user, onLogout, setCurrentPage }) => {
         <div className={`${styles["icons"]} ${styles["itens"]}`}>
           {user ? (
             <>
-              <button className={styles["item"]} onClick={() => setCurrentPage("PostsList")}>
+              <button
+                className={styles["item"]}
+                onClick={() => setCurrentPage("PostsList")}
+              >
                 Home
               </button>
-              <button className={styles["item"]} onClick={onLogout}>Logout</button>
-              <button className={styles["item"]} onClick={() => setCurrentPage("CreatePost")}>
+              <button className={styles["item"]} onClick={onLogout}>
+                Logout
+              </button>
+              <button
+                className={styles["item"]}
+                onClick={() => setCurrentPage("CreatePost")}
+              >
                 <MdOutlinePostAdd />
               </button>
-              <button className={styles["item"]} onClick={() => setCurrentPage("Profile")}>
-                Perfil
+              <button
+                className={styles["item"]}
+                onClick={() => setCurrentPage("Profile")}
+              >
+                Meu Perfil
               </button>
             </>
           ) : (
