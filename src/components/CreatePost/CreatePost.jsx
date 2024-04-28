@@ -23,11 +23,12 @@ const CreatePost = ({ user, onPostCreated }) => {
 
   const formatDate = (date) => {
     const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear().toString();
-
+  
     return `${day}/${month}/${year}`;
   };
+  
 
   const handleCreatePost = (event) => {
     event.preventDefault();
@@ -61,7 +62,7 @@ const CreatePost = ({ user, onPostCreated }) => {
         setDescription("");
         setKeyWordsText("");
         if (onPostCreated) {
-          onPostCreated(); // Notifica o sucesso para redirecionamento
+          onPostCreated();
         }
       })
       .catch((error) => {

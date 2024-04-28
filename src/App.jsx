@@ -4,38 +4,62 @@ import Login from "./components/Login/Login";
 import CreateUser from "./components/CreateUser/CreateUser";
 import CreatePost from "./components/CreatePost/CreatePost";
 import PostsList from "./screen/PostsList/PostsList";
+import UpdatePost from "./components/UpdatePost/UpdatePost";
 import "./App.css";
 
-const DataBaseTopics = "https://databasetopics-bbae0-default-rtdb.firebaseio.com/";
+
+const DataBaseTopics =
+  "https://databasetopics-bbae0-default-rtdb.firebaseio.com/";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("PostsList");
   const [user, setUser] = useState(null);
-  const [postsData, setPostsData] = useState([]);
+  const [postsData, setPostsData] = useState(null);
+  const [postToEdit, setPostToEdit] = useState(null);
+
+  function convertData(data) {
+    const ids = Object.keys(data);
+    let posts = Object.values(data);
+    return posts.map((post, index) => {
+      return {
+        id: ids[index],
+        ...post,
+      };
+    });
+  }
 
   const handleLogin = (loggedInUser) => {
     setUser(loggedInUser);
-    setCurrentPage("PostsList"); // Redirecionar para a lista de posts após login bem-sucedido
+    setCurrentPage("PostsList");
   };
 
   const handleLogout = () => {
     setUser(null);
-    setCurrentPage("Login"); // Redirecionar para login após logout
+    setCurrentPage("Login");
+  };
+
+  const handleEditPost = (postId) => {
+    setPostToEdit(postId);
+    setCurrentPage("UpdatePost");
   };
 
   const fetchPosts = async () => {
     try {
       const response = await fetch(`${DataBaseTopics}/topics.json`);
       const data = await response.json();
-
+  
       if (data) {
-        const topics = Object.values(data);
-        setPostsData(topics);
+        const convertedPosts = convertData(data);
+        setPostsData(convertedPosts); 
+      } else {
+        setPostsData([]); 
       }
     } catch (error) {
       console.error("Erro ao buscar os tópicos:", error);
+      setPostsData([]); 
     }
   };
+  
 
   useEffect(() => {
     if (currentPage === "PostsList") {
@@ -48,17 +72,36 @@ function App() {
       case "Login":
         return <Login onLogin={handleLogin} />;
       case "CreateUser":
-        return <CreateUser onUserCreated={() => setCurrentPage("Login")} />; // Redirecionar para login após criar usuário
+        return <CreateUser onUserCreated={() => setCurrentPage("Login")} />;
       case "CreatePost":
-        return <CreatePost user={user} onPostCreated={() => setCurrentPage("PostsList")} />; // Redirecionar para a lista de posts após criar um post
+        return (
+          <CreatePost
+            user={user}
+            onPostCreated={() => setCurrentPage("PostsList")}
+          />
+        );
+      case "UpdatePost":
+        return postToEdit ? (
+          <UpdatePost
+            postId={postToEdit}
+            user={user}
+            onPostUpdated={() => setCurrentPage("PostsList")}
+          />
+        ) : null;
       default:
-        return <PostsList posts={postsData} />;
+        return (
+          <PostsList posts={postsData} user={user} onEdit={handleEditPost} />
+        );
     }
   };
 
   return (
     <main>
-      <AppBar user={user} onLogout={handleLogout} setCurrentPage={setCurrentPage} />
+      <AppBar
+        user={user}
+        onLogout={handleLogout}
+        setCurrentPage={setCurrentPage}
+      />
       {renderPage()}
     </main>
   );

@@ -1,0 +1,41 @@
+.container {
+  width: 400px;
+  margin: 12px auto;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.textarea {
+  height: 100px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff9966;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #ff8533;
+}
