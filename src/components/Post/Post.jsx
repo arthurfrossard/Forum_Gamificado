@@ -1,7 +1,18 @@
 import React from "react";
 import styles from "./Post.module.css";
 
-const Post = ({ keyWords = [], publicationDate, description, title, userName, likes, dislikes, currentUser, onEdit }) => {
+const Post = ({
+  keyWords = [],
+  publicationDate,
+  description,
+  title,
+  userName,
+  likes,
+  dislikes,
+  currentUser,
+  onEdit,
+  onDelete,
+}) => {
   const isCreator = currentUser?.userName === userName;
 
   return (
@@ -15,7 +26,8 @@ const Post = ({ keyWords = [], publicationDate, description, title, userName, li
       <div className={styles.body}>
         <p className={styles.description}>{description}</p>
         <p className={styles.keyWords}>
-          Palavras-chave: {keyWords.length > 0 ? keyWords.join(", ") : "Nenhuma palavra-chave"}
+          Palavras-chave:{" "}
+          {keyWords.length > 0 ? keyWords.join(", ") : "Nenhuma palavra-chave"}
         </p>
       </div>
       <div className={styles.footer}>
@@ -24,9 +36,12 @@ const Post = ({ keyWords = [], publicationDate, description, title, userName, li
           <span className={styles.likes}>Curtidas: {likes}</span>
           <span className={styles.dislikes}>Descurtidas: {dislikes}</span>
           {isCreator && (
-            <button className={styles.editButton} onClick={onEdit}>
-              Editar
-            </button>
+            <>
+              <button className={styles.editButton} onClick={onEdit}>
+                Editar
+              </button>
+              <button onClick={onDelete}>Excluir</button>
+            </>
           )}
         </div>
       </div>

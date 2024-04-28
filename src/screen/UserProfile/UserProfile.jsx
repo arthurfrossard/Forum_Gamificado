@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PostsList from "../PostsList/PostsList";
 import styles from "./UserProfile.module.css";
 
-const UserProfile = ({ user, posts, onEdit}) => {
+const UserProfile = ({ user, posts, onEdit, onDelete}) => {
   const [userPosts, setUserPosts] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const UserProfile = ({ user, posts, onEdit}) => {
       
       <h2>Posts Publicados:</h2>
       {userPosts.length ? (
-        <PostsList posts={userPosts} user={user} onEdit={onEdit}/> 
+        <PostsList posts={userPosts} user={user} onDelete={onDelete} onEdit={onEdit}/> 
       ) : (
         <p>Nenhum post publicado pelo usuário.</p>
       )}

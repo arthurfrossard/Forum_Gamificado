@@ -42,6 +42,22 @@ const App = () => {
     setCurrentPage("UpdatePost");
   };
 
+  const handleDeletePost = async (postId) => {
+    const confirmation = window.confirm("Você tem certeza que deseja excluir este post?");
+    
+    if (confirmation) {
+      try {
+        await fetch(`${DataBaseTopics}/topics/${postId}.json`, {
+          method: "DELETE",
+        });
+        fetchPosts();
+      } catch (error) {
+        console.error("Erro ao excluir o post:", error);
+      }
+    }
+  };
+  
+
   const fetchPosts = async () => {
     try {
       const response = await fetch(`${DataBaseTopics}/topics.json`);
@@ -88,11 +104,11 @@ const App = () => {
         ) : null;
       case "Profile":
         return (
-          <UserProfile user={user} posts={postsData} onEdit={handleEditPost} />
+          <UserProfile user={user} posts={postsData} onDelete={handleDeletePost} onEdit={handleEditPost} />
         );
       default:
         return (
-          <PostsList posts={postsData} user={user} onEdit={handleEditPost} />
+          <PostsList posts={postsData} user={user} onDelete={handleDeletePost} onEdit={handleEditPost} />
         );
     }
   };
