@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./UpdatePost.module.css";
 
-const DataBaseTopics = "https://databasetopics-bbae0-default-rtdb.firebaseio.com";
+const DataBaseTopics =
+  "https://databasetopics-bbae0-default-rtdb.firebaseio.com";
 
 const UpdatePost = ({ postId, user, onPostUpdated }) => {
   const [title, setTitle] = useState("");
@@ -15,26 +16,26 @@ const UpdatePost = ({ postId, user, onPostUpdated }) => {
 
   useEffect(() => {
     const fetchPostData = async () => {
-        try {
-          const response = await fetch(`${DataBaseTopics}/topics/${postId}.json`);
-      
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-      
-          const data = await response.json();
-          if (data) {
-            setTitle(data.title);
-            setDescription(data.description);
-            setKeyWordsText(data.keyWords.join(", "));
-            setIsOwner(data.userName === user.userName);
-          } else {
-            console.error("A resposta JSON é nula ou indefinida");
-          }
-        } catch (error) {
-          console.error("Erro ao buscar os dados do post:", error);
+      try {
+        const response = await fetch(`${DataBaseTopics}/topics/${postId}.json`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-      };
+
+        const data = await response.json();
+        if (data) {
+          setTitle(data.title);
+          setDescription(data.description);
+          setKeyWordsText(data.keyWords.join(", "));
+          setIsOwner(data.userName === user.userName);
+        } else {
+          console.error("A resposta JSON é nula ou indefinida");
+        }
+      } catch (error) {
+        console.error("Erro ao buscar os dados do post:", error);
+      }
+    };
 
     fetchPostData();
   }, [postId, user.userName]);
@@ -68,7 +69,7 @@ const UpdatePost = ({ postId, user, onPostUpdated }) => {
       .then((response) => response.json())
       .then((data) => {
         if (onPostUpdated) {
-          onPostUpdated(); 
+          onPostUpdated();
         }
       })
       .catch((error) => {
@@ -103,12 +104,14 @@ const UpdatePost = ({ postId, user, onPostUpdated }) => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="keyWords">Palavras-Chave (separadas por vírgula):</label>
+            <label htmlFor="keyWords">
+              Palavras-Chave (separadas por vírgula):
+            </label>
             <input
               type="text"
               id="keyWords"
               value={keyWordsText}
-              onChange={(e) => setKeyWordsText(e.target.value)} 
+              onChange={(e) => setKeyWordsText(e.target.value)}
               className={styles.input}
             />
           </div>

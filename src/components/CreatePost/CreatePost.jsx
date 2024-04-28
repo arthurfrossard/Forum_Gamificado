@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./CreatePost.module.css";
 
-const DataBaseTopics = "https://databasetopics-bbae0-default-rtdb.firebaseio.com";
+const DataBaseTopics =
+  "https://databasetopics-bbae0-default-rtdb.firebaseio.com";
 
 const CreatePost = ({ user, onPostCreated }) => {
   const [title, setTitle] = useState("");
@@ -22,13 +23,12 @@ const CreatePost = ({ user, onPostCreated }) => {
   };
 
   const formatDate = (date) => {
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
     const year = date.getFullYear().toString();
-  
+
     return `${day}/${month}/${year}`;
   };
-  
 
   const handleCreatePost = (event) => {
     event.preventDefault();
@@ -95,7 +95,9 @@ const CreatePost = ({ user, onPostCreated }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="keyWords">Palavras-Chave (separadas por vírgula):</label>
+          <label htmlFor="keyWords">
+            Palavras-Chave (separadas por vírgula):
+          </label>
           <input
             type="text"
             id="keyWords"

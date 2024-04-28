@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 56px); /* Aqui compensamos o tamanho da AppBar */
+  height: calc(100vh - 56px);
 }
 
 .form {

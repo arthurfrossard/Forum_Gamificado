@@ -1,67 +1,64 @@
-/* UserProfile.module.css */
-
 .profile-container {
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .back-button {
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-button:hover {
-    background-color: #ddd;
-  }
-  
-  .profile-container h1 {
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .profile-container p {
-    font-size: 18px;
-    color: #555;
-    margin: 10px 0;
-  }
-  
-  .profile-container h2 {
-    font-size: 22px;
-    color: #333;
-    margin-top: 20px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  ul li:last-child {
-    border-bottom: none;
-  }
-  
-  ul li h3 {
-    font-size: 20px;
-    color: #444;
-  }
-  
-  ul li p {
-    font-size: 16px;
-    color: #666;
-    margin: 5px 0;
-  }
-  
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.back-button {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #ddd;
+}
+
+.profile-container h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.profile-container p {
+  font-size: 18px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.profile-container h2 {
+  font-size: 22px;
+  color: #333;
+  margin-top: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li h3 {
+  font-size: 20px;
+  color: #444;
+}
+
+ul li p {
+  font-size: 16px;
+  color: #666;
+  margin: 5px 0;
+}

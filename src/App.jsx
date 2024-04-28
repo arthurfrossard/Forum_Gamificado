@@ -43,8 +43,10 @@ const App = () => {
   };
 
   const handleDeletePost = async (postId) => {
-    const confirmation = window.confirm("Você tem certeza que deseja excluir este post?");
-    
+    const confirmation = window.confirm(
+      "Você tem certeza que deseja excluir este post?"
+    );
+
     if (confirmation) {
       try {
         await fetch(`${DataBaseTopics}/topics/${postId}.json`, {
@@ -56,7 +58,6 @@ const App = () => {
       }
     }
   };
-  
 
   const fetchPosts = async () => {
     try {
@@ -104,11 +105,21 @@ const App = () => {
         ) : null;
       case "Profile":
         return (
-          <UserProfile user={user} posts={postsData} onDelete={handleDeletePost} onEdit={handleEditPost} />
+          <UserProfile
+            user={user}
+            posts={postsData}
+            onDelete={handleDeletePost}
+            onEdit={handleEditPost}
+          />
         );
       default:
         return (
-          <PostsList posts={postsData} user={user} onDelete={handleDeletePost} onEdit={handleEditPost} />
+          <PostsList
+            posts={postsData}
+            user={user}
+            onDelete={handleDeletePost}
+            onEdit={handleEditPost}
+          />
         );
     }
   };

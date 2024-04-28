@@ -60,7 +60,7 @@ const Login = ({ onLogin }) => {
           <input
             type="password"
             id="password"
-           svalue={password}
+            svalue={password}
             onChange={handlePasswordChange}
             required
           />

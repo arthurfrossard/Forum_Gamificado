@@ -106,8 +106,8 @@ const Drawer = ({ isOpen, toggleDrawer, setCurrentPage, user, onLogout }) => {
                 <IoLogOut />
                 Logout
               </Button>
-              <Button >
-              <MdPrivacyTip />
+              <Button>
+                <MdPrivacyTip />
                 Politicas de Privacidade
               </Button>
             </>

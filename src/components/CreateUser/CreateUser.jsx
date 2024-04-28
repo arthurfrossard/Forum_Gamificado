@@ -44,11 +44,10 @@ const CreateUser = ({ onUserCreated }) => {
     const regex = /^[a-z0-9-_.]*$/;
     return regex.test(name) && !/\s/.test(name);
   };
-  
+
   const validatePassword = (pass) => {
     return pass.length >= 8 && !/\s/.test(pass);
   };
-  
 
   const isUserNameTaken = (name) => {
     return existingUsers.some((user) => user.userName === name);
@@ -71,9 +70,7 @@ const CreateUser = ({ onUserCreated }) => {
     }
 
     if (!validatePassword(password)) {
-      setMessage(
-        "A senha deve ter pelo menos 8 caracteres e sem espaços."
-      );
+      setMessage("A senha deve ter pelo menos 8 caracteres e sem espaços.");
       setLoading(false);
       return;
     }
@@ -109,7 +106,7 @@ const CreateUser = ({ onUserCreated }) => {
           setEmail("");
           setPassword("");
           if (onUserCreated) {
-            onUserCreated(); // Notifica o sucesso para redirecionamento
+            onUserCreated();
           }
         } else {
           throw new Error("Erro ao criar o usuário.");
