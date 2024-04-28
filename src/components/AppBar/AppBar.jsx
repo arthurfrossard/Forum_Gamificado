@@ -19,19 +19,22 @@ const AppBar = ({ user, onLogout, setCurrentPage }) => {
             className={styles["infos"]}
             onClick={() => setCurrentPage("PostsList")}
           >
-            <img className={styles["logo"]} src="src\assets\svg-logo.png" />
+            <img className={styles["logo"]} src="src/assets/svg-logo.png" />
             <span className={styles["nome"]}>Fórum Gamificado</span>
           </button>
         </div>
         <div className={`${styles["icons"]} ${styles["itens"]}`}>
           {user ? (
             <>
-              <button onClick={() => setCurrentPage("PostsList")}>
+              <button className={styles["item"]} onClick={() => setCurrentPage("PostsList")}>
                 Home
               </button>
-              <button onClick={onLogout}>Logout</button>
-              <button onClick={() => setCurrentPage("CreatePost")}>
+              <button className={styles["item"]} onClick={onLogout}>Logout</button>
+              <button className={styles["item"]} onClick={() => setCurrentPage("CreatePost")}>
                 <MdOutlinePostAdd />
+              </button>
+              <button className={styles["item"]} onClick={() => setCurrentPage("Profile")}>
+                Perfil
               </button>
             </>
           ) : (

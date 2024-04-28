@@ -5,6 +5,9 @@ import { MdHome } from "react-icons/md";
 import { IoLogIn } from "react-icons/io5";
 import { GiArchiveRegister } from "react-icons/gi";
 import { MdOutlinePostAdd } from "react-icons/md";
+import { IoLogOut } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { MdPrivacyTip } from "react-icons/md";
 
 const fadeIn = keyframes`
   from {
@@ -92,13 +95,21 @@ const Drawer = ({ isOpen, toggleDrawer, setCurrentPage, user, onLogout }) => {
           {user ? (
             <>
               <Button onClick={() => handleItemClick("Profile")}>
+                <CgProfile />
                 Perfil
               </Button>
               <Button onClick={() => handleItemClick("CreatePost")}>
                 <MdOutlinePostAdd />
                 Postar
               </Button>
-              <Button onClick={onLogout}>Logout</Button>
+              <Button onClick={onLogout}>
+                <IoLogOut />
+                Logout
+              </Button>
+              <Button >
+              <MdPrivacyTip />
+                Politicas de Privacidade
+              </Button>
             </>
           ) : (
             <>

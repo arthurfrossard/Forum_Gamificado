@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "./components/AppBar/AppBar";
 import Login from "./components/Login/Login";
 import CreateUser from "./components/CreateUser/CreateUser";
 import CreatePost from "./components/CreatePost/CreatePost";
-import PostsList from "./screen/PostsList/PostsList";
 import UpdatePost from "./components/UpdatePost/UpdatePost";
+import PostsList from "./screen/PostsList/PostsList";
+import UserProfile from "./screen/UserProfile/UserProfile";
 import "./App.css";
 
-
-const DataBaseTopics =
-  "https://databasetopics-bbae0-default-rtdb.firebaseio.com/";
-
-function App() {
+const App = () => {
   const [currentPage, setCurrentPage] = useState("PostsList");
   const [user, setUser] = useState(null);
   const [postsData, setPostsData] = useState(null);
   const [postToEdit, setPostToEdit] = useState(null);
+  const DataBaseTopics =
+    "https://databasetopics-bbae0-default-rtdb.firebaseio.com/";
 
   function convertData(data) {
     const ids = Object.keys(data);
@@ -47,19 +46,18 @@ function App() {
     try {
       const response = await fetch(`${DataBaseTopics}/topics.json`);
       const data = await response.json();
-  
+
       if (data) {
         const convertedPosts = convertData(data);
-        setPostsData(convertedPosts); 
+        setPostsData(convertedPosts);
       } else {
-        setPostsData([]); 
+        setPostsData([]);
       }
     } catch (error) {
       console.error("Erro ao buscar os tópicos:", error);
-      setPostsData([]); 
+      setPostsData([]);
     }
   };
-  
 
   useEffect(() => {
     if (currentPage === "PostsList") {
@@ -88,6 +86,10 @@ function App() {
             onPostUpdated={() => setCurrentPage("PostsList")}
           />
         ) : null;
+      case "Profile":
+        return (
+          <UserProfile user={user} posts={postsData} onEdit={handleEditPost} />
+        );
       default:
         return (
           <PostsList posts={postsData} user={user} onEdit={handleEditPost} />
@@ -105,6 +107,6 @@ function App() {
       {renderPage()}
     </main>
   );
-}
+};
 
 export default App;

@@ -29,5 +29,4 @@ const PostsList = ({ posts, user, onEdit }) => {
   );
 };
 
-
 export default PostsList;
