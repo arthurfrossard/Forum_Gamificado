@@ -9,7 +9,7 @@ const CreateUser = ({ onUserCreated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
-  const navigate = useNavigate(); // Hook para realizar redirecionamento
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -36,7 +36,7 @@ const CreateUser = ({ onUserCreated }) => {
       if (onUserCreated) {
         onUserCreated();
       }
-      navigate('/login'); // Redireciona para a página de login
+      navigate('/login');
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
     }

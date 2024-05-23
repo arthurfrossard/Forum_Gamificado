@@ -35,7 +35,7 @@ const Login = ({ onLogin }) => {
       } else {
         onLogin(foundUser);
         setError("");
-        navigate("/"); // Redireciona para a página inicial
+        navigate("/");
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
