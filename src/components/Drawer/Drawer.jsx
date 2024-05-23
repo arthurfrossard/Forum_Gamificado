@@ -1,4 +1,6 @@
+// Drawer.js
 import React from "react";
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import { MdHome } from "react-icons/md";
@@ -55,7 +57,7 @@ const DrawerContent = styled.div`
   padding: 20px;
 `;
 
-const Button = styled.button`
+const Button = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -78,9 +80,8 @@ const Button = styled.button`
   }
 `;
 
-const Drawer = ({ isOpen, toggleDrawer, setCurrentPage, user, onLogout }) => {
-  const handleItemClick = (page) => {
-    setCurrentPage(page);
+const Drawer = ({ isOpen, toggleDrawer, user, onLogout }) => {
+  const handleItemClick = () => {
     toggleDrawer();
   };
 
@@ -88,36 +89,36 @@ const Drawer = ({ isOpen, toggleDrawer, setCurrentPage, user, onLogout }) => {
     <>
       <DrawerContainer isOpen={isOpen}>
         <DrawerContent>
-          <Button onClick={() => handleItemClick("PostsList")}>
+          <Button to="/" onClick={handleItemClick}>
             <MdHome />
             Home
           </Button>
           {user ? (
             <>
-              <Button onClick={() => handleItemClick("Profile")}>
+              <Button to="/profile" onClick={handleItemClick}>
                 <CgProfile />
                 Meu Perfil
               </Button>
-              <Button onClick={() => handleItemClick("CreatePost")}>
+              <Button to="/create-post" onClick={handleItemClick}>
                 <MdOutlinePostAdd />
                 Postar
               </Button>
-              <Button onClick={onLogout}>
+              <button onClick={onLogout}>
                 <IoLogOut />
                 Logout
-              </Button>
-              <Button>
+              </button>
+              <Button to="/" onClick={handleItemClick}>
                 <MdPrivacyTip />
                 Politicas de Privacidade
               </Button>
             </>
           ) : (
             <>
-              <Button onClick={() => handleItemClick("Login")}>
+              <Button to="/login" onClick={handleItemClick}>
                 <IoLogIn />
                 Login
               </Button>
-              <Button onClick={() => handleItemClick("CreateUser")}>
+              <Button to="/create-user" onClick={handleItemClick}>
                 <GiArchiveRegister />
                 Cadastre-se
               </Button>

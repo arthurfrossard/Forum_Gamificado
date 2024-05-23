@@ -1,10 +1,12 @@
+// AppBar.js
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlinePostAdd } from "react-icons/md";
 import Drawer from "../Drawer/Drawer";
 import styles from "./AppBar.module.css";
 
-const AppBar = ({ user, onLogout, setCurrentPage }) => {
+const AppBar = ({ user, onLogout }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -15,53 +17,35 @@ const AppBar = ({ user, onLogout, setCurrentPage }) => {
     <>
       <div className={styles["app-bar"]}>
         <div className={styles["infos"]}>
-          <button
-            className={styles["infos"]}
-            onClick={() => setCurrentPage("PostsList")}
-          >
+          <Link to="/" className={styles["infos"]}>
             <img className={styles["logo"]} src="src/assets/svg-logo.png" />
             <span className={styles["nome"]}>Fórum Gamificado</span>
-          </button>
+          </Link>
         </div>
         <div className={`${styles["icons"]} ${styles["itens"]}`}>
           {user ? (
             <>
-              <button
-                className={styles["item"]}
-                onClick={() => setCurrentPage("PostsList")}
-              >
+              <Link to="/" className={styles["item"]}>
                 Home
-              </button>
+              </Link>
               <button className={styles["item"]} onClick={onLogout}>
                 Logout
               </button>
-              <button
-                className={styles["item"]}
-                onClick={() => setCurrentPage("CreatePost")}
-              >
+              <Link to="/create-post" className={styles["item"]}>
                 <MdOutlinePostAdd />
-              </button>
-              <button
-                className={styles["item"]}
-                onClick={() => setCurrentPage("Profile")}
-              >
+              </Link>
+              <Link to="/profile" className={styles["item"]}>
                 Meu Perfil
-              </button>
+              </Link>
             </>
           ) : (
             <>
-              <button
-                className={styles["item"]}
-                onClick={() => setCurrentPage("Login")}
-              >
+              <Link to="/login" className={styles["item"]}>
                 Login
-              </button>
-              <button
-                className={styles["item"]}
-                onClick={() => setCurrentPage("CreateUser")}
-              >
+              </Link>
+              <Link to="/create-user" className={styles["item"]}>
                 Cadastre-se
-              </button>
+              </Link>
             </>
           )}
           <button onClick={toggleDrawer}>
@@ -69,13 +53,7 @@ const AppBar = ({ user, onLogout, setCurrentPage }) => {
           </button>
         </div>
       </div>
-      <Drawer
-        isOpen={isDrawerOpen}
-        toggleDrawer={toggleDrawer}
-        setCurrentPage={setCurrentPage}
-        user={user}
-        onLogout={onLogout}
-      />
+      <Drawer isOpen={isDrawerOpen} toggleDrawer={toggleDrawer} user={user} onLogout={onLogout} />
     </>
   );
 };

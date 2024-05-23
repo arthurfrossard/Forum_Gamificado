@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const DataBaseUsers =
     "https://databaseusers-7fbfd-default-rtdb.firebaseio.com/";
@@ -33,6 +35,7 @@ const Login = ({ onLogin }) => {
       } else {
         onLogin(foundUser);
         setError("");
+        navigate("/"); // Redireciona para a página inicial
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
@@ -60,7 +63,7 @@ const Login = ({ onLogin }) => {
           <input
             type="password"
             id="password"
-            svalue={password}
+            value={password}
             onChange={handlePasswordChange}
             required
           />
