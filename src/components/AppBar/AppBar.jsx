@@ -31,7 +31,7 @@ const AppBar = ({ user, onLogout }) => {
               <button className={styles["item"]} onClick={onLogout}>
                 Logout
               </button>
-              <Link to="/create-post" className={styles["item"]}>
+              <Link to="/create-post" id="postar" className={styles["item"]}>
                 <MdOutlinePostAdd />
               </Link>
               <Link to="/profile" className={styles["item"]}>

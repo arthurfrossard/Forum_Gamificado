@@ -106,7 +106,7 @@ const CreatePost = ({ user, onPostCreated }) => {
             className={styles.input}
           />
         </div>
-        <button type="submit" className={styles.submitButton}>
+        <button type="submit" className={styles.submitButton} id="criar-post-teste">
           Criar Post
         </button>
       </form>

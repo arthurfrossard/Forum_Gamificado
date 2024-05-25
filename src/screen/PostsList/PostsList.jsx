@@ -6,7 +6,7 @@ const PostsList = ({ posts, user, onEdit, onDelete }) => {
   return (
     <div className={styles.postsContainer}>
       {posts ? (
-        <div className={styles.posts}>
+        <div className={`${styles.posts} posts-test`}>
           {posts.map((post) => (
             <Post
               key={post.id}

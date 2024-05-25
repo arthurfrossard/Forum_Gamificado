@@ -37,10 +37,10 @@ const Post = ({
           <span className={styles.dislikes}>Descurtidas: {dislikes}</span>
           {isCreator && (
             <>
-              <button className={styles.editButton} onClick={onEdit}>
+              <button className={`${styles.editButton} edit-test`} onClick={onEdit}>
                 Editar
               </button>
-              <button onClick={onDelete}>Excluir</button>
+              <button onClick={onDelete} className="delete-test" >Excluir</button>
             </>
           )}
         </div>
